@@ -1,3 +1,5 @@
+DROP DATABASE projetos;
+CREATE DATABASE projetos;
 USE projetos;
 
 CREATE TABLE IF NOT EXISTS projetos (
@@ -21,12 +23,12 @@ CREATE TABLE IF NOT EXISTS servidor_participa (
 
     codigo INT,
     CONSTRAINT `fk_servidores_codigo_projeto`
-    FOREIGN KEY (codigo) REFERENCES projetos(codigo),
+    FOREIGN KEY (codigo) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
 
     PRIMARY KEY(siape, codigo)
 );
 
-CREATE TABLE IF NOT EXISTS aluno (
+CREATE TABLE IF NOT EXISTS alunos (
     matricula INT PRIMARY KEY,
     nome VARCHAR(255),
     curso VARCHAR(255)
@@ -35,11 +37,11 @@ CREATE TABLE IF NOT EXISTS aluno (
 CREATE TABLE IF NOT EXISTS aluno_participa (
     matricula INT,
     CONSTRAINT `fk_matricula_aluno`
-    FOREIGN KEY (matricula) REFERENCES aluno(matricula),
+    FOREIGN KEY (matricula) REFERENCES alunos(matricula) ON DELETE CASCADE ON UPDATE CASCADE,
 
     codigo INT,
     CONSTRAINT `fk_alunos_codigo_projeto`
-    FOREIGN KEY (codigo) REFERENCES projetos(codigo),
+    FOREIGN KEY (codigo) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
 
     bolsista BOOLEAN,
     PRIMARY KEY(matricula, codigo)
@@ -53,11 +55,11 @@ CREATE TABLE IF NOT EXISTS outros (
 CREATE TABLE IF NOT EXISTS outro_participa (
     cpf char(9),
     CONSTRAINT `fk_cpf_outro`
-    FOREIGN KEY (cpf) REFERENCES outros(cpf),
+    FOREIGN KEY (cpf) REFERENCES outros(cpf) ON DELETE CASCADE ON UPDATE CASCADE,
 
     codigo INT,
     CONSTRAINT `fk_outros_codigo_projeto`
-    FOREIGN KEY (codigo) REFERENCES projetos(codigo),
+    FOREIGN KEY (codigo) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
 
     PRIMARY KEY(cpf, codigo)
 );
@@ -66,7 +68,7 @@ CREATE TABLE IF NOT EXISTS acoes (
     codigo INT PRIMARY KEY,
     codigo_projeto INT,
     CONSTRAINT `fk_acoes_codigo_projeto`
-    FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo),
+    FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
 
     titulo VARCHAR(255),
     genero VARCHAR(255),
@@ -78,7 +80,7 @@ CREATE TABLE IF NOT EXISTS articulacoes (
     codigo INT PRIMARY KEY,
     codigo_projeto INT,
     CONSTRAINT `fk_articulacoes_codigo_projeto`
-    FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo),
+    FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
     nome VARCHAR(255)
 );
 
@@ -90,11 +92,11 @@ CREATE TABLE IF NOT EXISTS programas (
 CREATE TABLE IF NOT EXISTS programa_contem (
     codigo_programa INT,
     CONSTRAINT `fk_codigo_programa`
-    FOREIGN KEY (codigo_programa) REFERENCES programas(codigo),
+    FOREIGN KEY (codigo_programa) REFERENCES programas(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
 
     codigo_projeto INT,
     CONSTRAINT `fk_programas_codigo_projeto`
-    FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo),
+    FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
 
     PRIMARY KEY(codigo_programa, codigo_projeto)
 );
@@ -125,7 +127,7 @@ SELECT * FROM (
 ) AS tmp
 WHERE NOT EXISTS (SELECT 1 FROM servidores);
 
-INSERT INTO aluno (matricula, nome, curso)
+INSERT INTO alunos (matricula, nome, curso)
 SELECT * FROM (
     SELECT 26010001 AS matricula, 'Lucas Pereira' AS nome, 'Ciência da Computação' AS curso UNION ALL
     SELECT 26010002, 'Mariana Ribeiro',  'Engenharia de Computação' UNION ALL
@@ -133,7 +135,7 @@ SELECT * FROM (
     SELECT 26010004, 'Camila Duarte',    'Biologia' UNION ALL
     SELECT 26010005, 'Gabriel Nunes',    'Ciência da Computação'
 ) AS tmp
-WHERE NOT EXISTS (SELECT 1 FROM aluno);
+WHERE NOT EXISTS (SELECT 1 FROM alunos);
 
 INSERT INTO outros (cpf, nome)
 SELECT * FROM (
