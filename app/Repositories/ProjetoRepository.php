@@ -23,26 +23,26 @@ class ProjetoRepository
 
     public static function deletar_projeto($codigo)
     {
-        DB::insert('DELETE FROM projetos WHERE codigo = ?', [$codigo]);
+        DB::delete('DELETE FROM projetos WHERE codigo = ?', [$codigo]);
     }
 
     public static function atualizar_nome($codigo, $nome)
     {
-        DB::insert('UPDATE projetos SET nome = ? WHERE codigo = ?', [$nome, $codigo]);
+        DB::update('UPDATE projetos SET nome = ? WHERE codigo = ?', [$nome, $codigo]);
     }
 
     public static function atualizar_eixo($codigo, $eixo)
     {
-        DB::insert('UPDATE projetos SET eixo = ? WHERE codigo = ?', [$nome, $eixo]);
+        DB::update('UPDATE projetos SET eixo = ? WHERE codigo = ?', [$nome, $eixo]);
     }
 
     public static function atualizar_status($codigo, $status)
     {
-        DB::insert('UPDATE projetos SET status = ? WHERE codigo = ?', [$status, $codigo]);
+        DB::update('UPDATE projetos SET status = ? WHERE codigo = ?', [$status, $codigo]);
     }
 
     public static function atualizar_ano($codigo, $ano)
     {
-        DB::insert('UPDATE projetos SET ano = ? WHERE codigo = ?', [$ano, $codigo]);
+        DB::update('UPDATE projetos SET ano = ? WHERE codigo = ?', [$ano, $codigo]);
     }
 }
