@@ -33,7 +33,7 @@ class ProjetoRepository
 
     public static function atualizar_eixo(int $codigo, string $eixo)
     {
-        DB::update('UPDATE projetos SET eixo = ? WHERE codigo = ?', [$nome, $eixo]);
+        DB::update('UPDATE projetos SET eixo = ? WHERE codigo = ?', [$eixo, $codigo]);
     }
 
     public static function atualizar_status(int $codigo, string $status)
