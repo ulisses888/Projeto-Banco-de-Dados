@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS servidor_participa (
     CONSTRAINT `fk_servidores_codigo_projeto`
     FOREIGN KEY (codigo) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
 
+    funcao VARCHAR(255),
     PRIMARY KEY(siape, codigo)
 );
 
