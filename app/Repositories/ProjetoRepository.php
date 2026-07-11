@@ -62,4 +62,34 @@ class ProjetoRepository
     {
         DB::delete('DELETE FROM aluno_participa WHERE codigo = ? AND matricula = ?', [$codigo, $matricula]);
     }
+
+    public static function servidores(int $codigo): array
+    {
+        return DB::select('SELECT * FROM servidores NATURAL JOIN servidor_participa WHERE codigo = ?', [$codigo]);
+    }
+
+    public static function adicionar_servidor(int $codigo, int $siape, bool $funcao)
+    {
+        DB::insert('INSERT INTO servidor_participa VALUES (?, ?, ?)', [$siape, $codigo, $funcao]);
+    }
+
+    public static function remover_servidor(int $codigo, int $siape)
+    {
+        DB::delete('DELETE FROM servidor_participa WHERE codigo = ? AND siape = ?', [$codigo, $siape]);
+    }
+
+    public static function outros(int $codigo): array
+    {
+        return DB::select('SELECT * FROM outros NATURAL JOIN outro_participa WHERE codigo = ?', [$codigo]);
+    }
+
+    public static function adicionar_outro(int $codigo, int $cpf)
+    {
+        DB::insert('INSERT INTO outro_participa VALUES (?, ?)', [$cpf, $codigo]);
+    }
+
+    public static function remover_outro(int $codigo, int $cpf)
+    {
+        DB::delete('DELETE FROM outro_participa WHERE codigo = ? AND cpf = ?', [$codigo, $cpf]);
+    }
 }
