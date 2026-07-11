@@ -3,52 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title style="color: white;">Document</title>
+    <title style="color: white;">Banco De Dados</title>
 
-<!--Cabeçalho -->
-</head>
 
-<style>
-        h1{
-            color: white; 
+<!--=======================/////////////////////|||||||||||||||||||||  Estilo  |||||||||||||||||||||\\\\\\\\\\\\\\\\\\\\\\=======================-->
+    <style>
+        * {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1A1818;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #1A1818;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        h1 {
+            color: white;
             text-align: center;
             font-family: 'American Typewriter', serif;
             font-size: 300%;
-    
+            margin: 0;
         }
-        p{
-            color: white; 
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 120px);
+            padding: 20px;
+            gap: 20px;
+        }
+
+        /* Navegação (array de botões) */
+        .nav-container {
+            background-color: #2c2a2a;
+            width: 200px;
+            min-width: 200px;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-container p {
+            color: white;
             text-align: center;
-        
+            background-color: transparent;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            margin: 0 0 20px 0;
+            padding: 0;
+            font-size: 14px;
         }
-    </style>
 
-    <h1 style="color: white; text-align: center;">Banco De dados</h1>
-<body bgcolor="1A1818">
-
-<!--estilo da página -->
-    <style>
-        h1{
-            color: #1A1818;
+        .nav-container button {
+            background-color: #4a4a4a;
+            width: 150px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
-        p{
-            color: white; 
+
+        .nav-container button:hover {
+            background-color: #6a6a6a;
+        }
+
+        /* fim de Navegação (array de botões) */
+
+
+        /* àrea de conteúdo */
+        .content-container {
+            flex: 1;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-container p {
+            color: white;
             text-align: left;
-            padding-left: 20px;
-            background-color: #2c2a2a; width: 110px; height: 20px; border-radius: 5px;
-            margin: 20px;
+            background-color: transparent;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-size: 16px;
         }
+
+        .iframe-wrapper {
+            flex: 1;
+            background-color: #1a3d4f;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: white;
+        }
+        /* fim da área de conteúdo */
+
+
+        /* configuração responsiva */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .nav-container {
+                width: 100%;
+                min-width: unset;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .nav-container p {
+                width: 100%;
+                text-align: center;
+            }
+
+            .content-container {
+                min-height: 500px;
+            }
+        }
+
+           /* fim de configuração responsiva */
     </style>
+</head>
+<body>
 
+<!--=======================/////////////////////|||||||||||||||||||||  Texto/funções  |||||||||||||||||||||\\\\\\\\\\\\\\\\\\\\\\=======================-->
 
-    <!--Área de texto -->
-    <br>
-    <br>
-    <button onlick=""style="background-color: #2c2a2a; width: 100px; height: 20px; border-radius: 5px; color: white; margin-left: 20px;">Teste</button>
-    <p>Area de testes</p>
+    <!-- Header -->
+    <header>
+        <h1>Banco De Dados</h1>
+    </header>
 
-    <iframe style="padding-left: 200px; padding-top: -50px; border: none;" src="resources/views/Table_area.blade.php" height="600" width="1100"></iframe>
+    <!-- Layout principal -->
+    <div class="main-container">
+        
+        <!-- Array de Botões -->
+        <div class="nav-container">
+            <p>Área de testes</p>
+            <button onclick="openTable()">Teste</button>
+        </div>
 
+        <!-- Área de Conteúdo -->
+        <div class="content-container">
+            <p>Conteúdo</p>
+            <div class="iframe-wrapper">
+                <iframe 
+                    id="tableFrame"
+                    src="{{ url('/Table_area') }}"
+                    title="Table_area"
+                    scrolling="auto"
+                ></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openTable() {
+            const iframe = document.getElementById('tableFrame');
+            iframe.src = "{{ url('/Table_area') }}";
+        }
+    </script>
 
 </body>
 </html>
