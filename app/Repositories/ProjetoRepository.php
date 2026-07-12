@@ -46,7 +46,7 @@ class ProjetoRepository
         DB::update('UPDATE projetos SET ano = ? WHERE codigo = ?', [$ano, $codigo]);
     }
 
-    // Relações
+    // Equipe
     
     public static function alunos(int $codigo): array
     {
@@ -83,12 +83,12 @@ class ProjetoRepository
         return DB::select('SELECT * FROM outros NATURAL JOIN outro_participa WHERE codigo = ?', [$codigo]);
     }
 
-    public static function adicionar_outro(int $codigo, int $cpf)
+    public static function adicionar_outro(int $codigo, string $cpf)
     {
         DB::insert('INSERT INTO outro_participa VALUES (?, ?)', [$cpf, $codigo]);
     }
 
-    public static function remover_outro(int $codigo, int $cpf)
+    public static function remover_outro(int $codigo, string $cpf)
     {
         DB::delete('DELETE FROM outro_participa WHERE codigo = ? AND cpf = ?', [$codigo, $cpf]);
     }

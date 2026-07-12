@@ -146,11 +146,11 @@ SELECT * FROM (
 ) AS tmp
 WHERE NOT EXISTS (SELECT 1 FROM outros);
 
-#ULISSES: AQ SERIA A TABELA PROGRAMAS MAS N ENTENDI MT BEM ELA ENTAO VOU DEIXAR O ESPACO EM BRANCO
-#ULISSES: SE ELE É UM GUARDA CHUVA ACREDITO QUE N TEM RPROBLEMA FICAR VAZIO
-#
-#
-#
+INSERT INTO programas (codigo, nome)
+SELECT * FROM (
+    SELECT 1 AS codigo, 'Educação Escolar' AS nome
+) AS tmp
+WHERE NOT EXISTS (SELECT 1 FROM programas);
 
 INSERT INTO servidor_participa (siape, codigo)
 SELECT * FROM (
@@ -203,4 +203,9 @@ SELECT * FROM (
 ) AS tmp
 WHERE NOT EXISTS (SELECT 1 FROM articulacoes);
 
-#ULISSES: AQ SERIA O PROGRAMA_CONTEM, MESMA JUSTIFICATIVA DE ANTES
+INSERT INTO programa_contem (codigo_programa, codigo_projeto)
+SELECT * FROM (
+    SELECT 1 AS codigo_programa, 3 AS codigo_projeto UNION ALL
+    SELECT 1, 4
+) AS tmp
+WHERE NOT EXISTS (SELECT 1 FROM programa_contem);
