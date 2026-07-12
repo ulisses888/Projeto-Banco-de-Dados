@@ -6,6 +6,6 @@ Route::get('/', function () {
     return view('window');
 });
 
-Route::get('/Table_area', function () {
-    return view('Table_area');
+Route::get('/teste', function () {
+    return view('window');
 });
