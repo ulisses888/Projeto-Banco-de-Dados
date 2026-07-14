@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS programa_contem (
     PRIMARY KEY(codigo_programa, codigo_projeto)
 );
 
-# TRIGGER
+# TRIGGERS
 
 DELIMITER //
 
@@ -167,13 +167,13 @@ SELECT * FROM (
 ) AS tmp
 WHERE NOT EXISTS (SELECT 1 FROM programas);
 
-INSERT INTO servidor_participa (siape, codigo)
+INSERT INTO servidor_participa (siape, codigo, funcao)
 SELECT * FROM (
-    SELECT 100001 AS siape, 1 AS codigo UNION ALL
-    SELECT 100002, 1 UNION ALL
-    SELECT 100003, 2 UNION ALL
-    SELECT 100004, 3 UNION ALL
-    SELECT 100005, 5
+    SELECT 100001 AS siape, 1 AS codigo, 'Coordenador' AS funcao UNION ALL
+    SELECT 100002, 1, 'Adjunto' UNION ALL
+    SELECT 100003, 2, 'Coordenador' UNION ALL
+    SELECT 100004, 3, 'Coordenador' UNION ALL
+    SELECT 100005, 5, 'Coordenador'
 ) AS tmp
 WHERE NOT EXISTS (SELECT 1 FROM servidor_participa);
 
