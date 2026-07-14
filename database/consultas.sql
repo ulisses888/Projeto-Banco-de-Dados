@@ -1,7 +1,7 @@
 USE projetos;
 
 # Alunos do projeto 2
-SELECT matricula, nome, bolsista FROM alunos NATURAL JOIN aluno_participa WHERE codigo = 1;
+SELECT matricula, nome, bolsista FROM alunos NATURAL JOIN aluno_participa WHERE codigo = 2;
 
 # Servidores do projeto 2
 SELECT siape, nome, funcao FROM servidores NATURAL JOIN servidor_participa WHERE codigo = 2;
