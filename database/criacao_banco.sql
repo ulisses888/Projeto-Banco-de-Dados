@@ -102,6 +102,21 @@ CREATE TABLE IF NOT EXISTS programa_contem (
     PRIMARY KEY(codigo_programa, codigo_projeto)
 );
 
+# TRIGGER
+
+DELIMITER //
+
+CREATE TRIGGER retirar_bolsa
+AFTER UPDATE ON projetos
+FOR EACH ROW
+BEGIN
+    IF NEW.status = 'Concluído' THEN
+        UPDATE aluno_participa SET bolsista = FALSE WHERE aluno_participa.codigo = NEW.codigo;
+    END IF;
+END; //
+
+DELIMITER ;
+
 #
 #
 # POPULANDO A TABELA: (SO EXECUTA SE ELAS TIVEREM VAZIAS)
