@@ -161,12 +161,9 @@
         
         <!-- Array de Botões -->
         <div class="nav-container">
-            <p>Opções</p>
-            <button onclick="openTable()">Pesquisar</button>
-            <br>
-            <button onclick="openCadastro()">Cadastrar</button>
+            <p>Área de testes</p>
+            <button onclick="openTable()">Teste</button>
         </div>
-
 
         <!-- Área de Conteúdo -->
         <div class="content-container">
