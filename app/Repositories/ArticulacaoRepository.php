@@ -8,7 +8,7 @@ class ArticulacaoRepository
 {
     public static function articulacoes(): array
     {
-        return DB::select('SELECT * FROM articulacoes');
+        return DB::select('SELECT articulacoes.codigo, articulacoes.nome, projetos.nome AS nome_projeto FROM articulacoes INNER JOIN projetos ON articulacoes.codigo_projeto = projetos.codigo');
     }
 
     public static function articulacao_por_codigo(int $codigo): array

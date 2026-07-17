@@ -14,7 +14,7 @@
                 <td>{{ $acao->titulo }}</td>
                 <td>{{ $acao->genero }}</td>
                 <td>{{ $acao->status }}</td>
-                <td>{{ $acao->codigo_projeto }}</td>
+                <td>{{ $acao->nome }}</td>
                 <td class="text-end">
                     <a href="{{ route('acoes.edit', $acao->codigo) }}" class="btn btn-sm btn-warning">Editar</a>
                     <form action="{{ route('acoes.destroy', $acao->codigo) }}" method="POST" class="d-inline" onsubmit="return confirm('Remover esta ação?')">

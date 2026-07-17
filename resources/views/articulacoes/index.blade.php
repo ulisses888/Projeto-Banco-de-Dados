@@ -6,13 +6,13 @@
         <a href="{{ route('articulacoes.create') }}" class="btn btn-primary">+ Nova</a>
     </div>
     <table class="table table-striped bg-white align-middle">
-        <thead><tr><th>Código</th><th>Nome</th><th>Projeto</th><th></th></tr></thead>
+        <thead><tr><th>Código</th><th>Cursos</th><th>Projeto</th><th></th></tr></thead>
         <tbody>
         @foreach($articulacoes as $articulacao)
             <tr>
                 <td>{{ $articulacao->codigo }}</td>
                 <td>{{ $articulacao->nome }}</td>
-                <td>{{ $articulacao->codigo_projeto }}</td>
+                <td>{{ $articulacao->nome_projeto }}</td>
                 <td class="text-end">
                     <a href="{{ route('articulacoes.edit', $articulacao->codigo) }}" class="btn btn-sm btn-warning">Editar</a>
                     <form action="{{ route('articulacoes.destroy', $articulacao->codigo) }}" method="POST" class="d-inline" onsubmit="return confirm('Remover esta articulação?')">
