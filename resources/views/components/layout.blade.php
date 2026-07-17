@@ -52,6 +52,7 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            gap: 10px;
             align-items: center;
         }
 
@@ -158,22 +159,14 @@
 
     <!-- Layout principal -->
     <div class="main-container">
-        
         <!-- Array de Botões -->
         <div class="nav-container">
-            <p>Menu</p>
             <button onclick="loadPage('projetos')" class="active">Projetos</button>
-            <br>
             <button onclick="loadPage('programas')">Programas</button>
-            <br>
             <button onclick="loadPage('acoes')">Ações</button>
-            <br>
             <button onclick="loadPage('articulacoes')">Articulações</button>
-            <br>
             <button onclick="loadPage('alunos')">Alunos</button>
-            <br>
             <button onclick="loadPage('servidores')">Servidores</button>
-            <br>
             <button onclick="loadPage('outros')">Outros</button>
         </div>
 
@@ -198,6 +191,7 @@
             document.querySelectorAll('.nav-container button').forEach(btn => {
                 btn.classList.remove('active');
             });
+            
             event.target.classList.add('active');
         }
     </script>

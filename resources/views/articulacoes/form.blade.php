@@ -30,6 +30,6 @@
         </div>
 
         <button class="btn btn-primary">Salvar</button>
-        <a href="{{ route('articulacoes.index') }}" class="btn btn-link">Cancelar</a>
+        <a href="{{ route('articulacoes.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 @endsection

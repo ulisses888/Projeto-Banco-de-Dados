@@ -3,9 +3,9 @@
 @section('conteudo')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 m-0">Alunos</h1>
-        <a href="{{ route('alunos.create') }}" class="btn btn-primary">Novo aluno</a>
+        <a href="{{ route('alunos.create') }}" class="btn btn-primary">+ Novo</a>
     </div>
-    <table class="table table-striped bg-white">
+    <table class="table table-striped bg-white align-middle">
         <thead>
             <tr><th>Matrícula</th><th>Nome</th><th>Curso</th><th></th></tr>
         </thead>
@@ -16,10 +16,10 @@
                 <td>{{ $aluno->nome }}</td>
                 <td>{{ $aluno->curso }}</td>
                 <td class="text-end">
-                    <a href="{{ route('alunos.edit', $aluno->matricula) }}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                    <a href="{{ route('alunos.edit', $aluno->matricula) }}" class="btn btn-sm btn-warning">Editar</a>
                     <form action="{{ route('alunos.destroy', $aluno->matricula) }}" method="POST" class="d-inline" onsubmit="return confirm('Remover este aluno?')">
                         @csrf @method('DELETE')
-                        <button class="btn btn-sm btn-outline-danger">Remover</button>
+                        <button class="btn btn-sm btn-danger">Remover</button>
                     </form>
                 </td>
             </tr>

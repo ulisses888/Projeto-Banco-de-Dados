@@ -6,7 +6,7 @@
             <h1 class="h3 m-0">{{ $programa->nome }}</h1>
             <small class="text-muted">Código {{ $programa->codigo }}</small>
         </div>
-        <a href="{{ route('programas.edit', $programa->codigo) }}" class="btn btn-outline-secondary">Editar programa</a>
+        <a href="{{ route('programas.edit', $programa->codigo) }}" class="btn btn-secondary">Editar programa</a>
     </div>
 
     <div class="card">
@@ -17,7 +17,7 @@
                     <a href="{{ route('projetos.show', $projeto->codigo) }}">{{ $projeto->nome }} ({{ $projeto->codigo }})</a>
                     <form action="{{ route('programas.projetos.remover', [$programa->codigo, $projeto->codigo]) }}" method="POST" onsubmit="return confirm('Desvincular projeto do programa?')">
                         @csrf @method('DELETE')
-                        <button class="btn btn-sm btn-outline-danger">Desvincular</button>
+                        <button class="btn btn-sm btn-danger">Desvincular</button>
                     </form>
                 </li>
             @empty

@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('titulo', $outro ? 'Editar registro' : 'Novo registro')
+@section('titulo', $outro ? 'Editar participante' : 'Novo participante')
 @section('conteudo')
-    <h1 class="h3 mb-3">{{ $outro ? 'Editar registro' : 'Novo registro' }}</h1>
+    <h1 class="h3 mb-3">{{ $outro ? 'Editar participante' : 'Novo participante' }}</h1>
     <form method="POST" action="{{ $outro ? route('outros.update', $outro->cpf) : route('outros.store') }}" class="bg-white p-4 rounded shadow-sm">
         @csrf
         @if($outro) @method('PUT') @endif
@@ -17,6 +17,6 @@
         </div>
 
         <button class="btn btn-primary">Salvar</button>
-        <a href="{{ route('outros.index') }}" class="btn btn-link">Cancelar</a>
+        <a href="{{ route('outros.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 @endsection

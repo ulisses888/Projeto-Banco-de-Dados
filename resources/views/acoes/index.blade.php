@@ -3,9 +3,9 @@
 @section('conteudo')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 m-0">Ações</h1>
-        <a href="{{ route('acoes.create') }}" class="btn btn-primary">Nova ação</a>
+        <a href="{{ route('acoes.create') }}" class="btn btn-primary">+ Nova</a>
     </div>
-    <table class="table table-striped bg-white">
+    <table class="table table-striped bg-white align-middle">
         <thead><tr><th>Código</th><th>Título</th><th>Gênero</th><th>Status</th><th>Projeto</th><th></th></tr></thead>
         <tbody>
         @foreach($acoes as $acao)
@@ -16,10 +16,10 @@
                 <td>{{ $acao->status }}</td>
                 <td>{{ $acao->codigo_projeto }}</td>
                 <td class="text-end">
-                    <a href="{{ route('acoes.edit', $acao->codigo) }}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                    <a href="{{ route('acoes.edit', $acao->codigo) }}" class="btn btn-sm btn-warning">Editar</a>
                     <form action="{{ route('acoes.destroy', $acao->codigo) }}" method="POST" class="d-inline" onsubmit="return confirm('Remover esta ação?')">
                         @csrf @method('DELETE')
-                        <button class="btn btn-sm btn-outline-danger">Remover</button>
+                        <button class="btn btn-sm btn-danger">Remover</button>
                     </form>
                 </td>
             </tr>

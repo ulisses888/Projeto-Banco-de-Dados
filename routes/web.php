@@ -9,6 +9,16 @@ use App\Http\Controllers\ProjetoController;
 use App\Http\Controllers\ProgramaController;
 use Illuminate\Support\Facades\Route;
 
+// Projetos
+Route::get('/', [ProjetoController::class, 'index'])->name('projetos.index');
+Route::get('/projetos', [ProjetoController::class, 'index'])->name('projetos.index');
+Route::get('/projetos/novo', [ProjetoController::class, 'create'])->name('projetos.create');
+Route::post('/projetos', [ProjetoController::class, 'store'])->name('projetos.store');
+Route::get('/projetos/{codigo}', [ProjetoController::class, 'show'])->name('projetos.show');
+Route::get('/projetos/{codigo}/editar', [ProjetoController::class, 'edit'])->name('projetos.edit');
+Route::put('/projetos/{codigo}', [ProjetoController::class, 'update'])->name('projetos.update');
+Route::delete('/projetos/{codigo}', [ProjetoController::class, 'destroy'])->name('projetos.destroy');
+
 // Alunos
 Route::get('/alunos', [AlunoController::class, 'index'])->name('alunos.index');
 Route::get('/alunos/novo', [AlunoController::class, 'create'])->name('alunos.create');
@@ -49,15 +59,6 @@ Route::get('/acoes/{codigo}/editar', [AcaoController::class, 'edit'])->name('aco
 Route::put('/acoes/{codigo}', [AcaoController::class, 'update'])->name('acoes.update');
 Route::delete('/acoes/{codigo}', [AcaoController::class, 'destroy'])->name('acoes.destroy');
 
-// Projetos
-Route::get('/projetos', [ProjetoController::class, 'index'])->name('projetos.index');
-Route::get('/projetos/novo', [ProjetoController::class, 'create'])->name('projetos.create');
-Route::post('/projetos', [ProjetoController::class, 'store'])->name('projetos.store');
-Route::get('/projetos/{codigo}', [ProjetoController::class, 'show'])->name('projetos.show');
-Route::get('/projetos/{codigo}/editar', [ProjetoController::class, 'edit'])->name('projetos.edit');
-Route::put('/projetos/{codigo}', [ProjetoController::class, 'update'])->name('projetos.update');
-Route::delete('/projetos/{codigo}', [ProjetoController::class, 'destroy'])->name('projetos.destroy');
-
 // Equipe do projeto
 Route::post('/projetos/{codigo}/alunos', [ProjetoController::class, 'adicionarAluno'])->name('projetos.alunos.adicionar');
 Route::delete('/projetos/{codigo}/alunos/{matricula}', [ProjetoController::class, 'removerAluno'])->name('projetos.alunos.remover');
@@ -78,13 +79,3 @@ Route::delete('/programas/{codigo}', [ProgramaController::class, 'destroy'])->na
 // Projetos do programa
 Route::post('/programas/{codigo}/projetos', [ProgramaController::class, 'adicionarProjeto'])->name('programas.projetos.adicionar');
 Route::delete('/programas/{codigo}/projetos/{codigo_projeto}', [ProgramaController::class, 'removerProjeto'])->name('programas.projetos.remover');
-
-
-Route::get('/', function () {
-    return view('window');
-});
-
-Route::get('/teste', function () {
-    return view('window');
-});
-

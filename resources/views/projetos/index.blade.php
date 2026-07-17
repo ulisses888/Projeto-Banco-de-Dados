@@ -1,10 +1,12 @@
-<div class="card">
+@extends('layouts.app')
+@section('titulo', 'Projetos')
+@section('conteudo')
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Projetos</h2>
+        <h1 class="h3 m-0">Projetos</h1>
         <div>
             <form method="GET" action="/projetos" class="d-inline">
-                <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control d-inline" style="width:200px; display:inline;">
-                <button class="btn btn-outline-secondary">Buscar</button>
+                <input type="text" name="search" placeholder="Buscar..." value="{{ request('search') }}" class="form-control align-middle d-inline me-1" style="width:200px;">
+                <button type="submit" class="btn btn-secondary">Buscar</button>
             </form>
             <a href="/projetos/novo" class="btn btn-primary">+ Novo</a>
         </div>
@@ -14,7 +16,7 @@
         <div class="alert alert-success">{{ session('sucesso') }}</div>
     @endif
 
-    <table class="table table-striped">
+    <table class="table table-striped align-middle">
         <thead>
             <tr>
                 <th>Código</th>
@@ -22,7 +24,7 @@
                 <th>Eixo</th>
                 <th>Status</th>
                 <th>Ano</th>
-                <th>Ações</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -31,9 +33,9 @@
                 <td>{{ $p->codigo }}</td>
                 <td>{{ $p->nome }}</td>
                 <td>{{ $p->eixo }}</td>
-                <td><span class="badge bg-{{ $p->status == 'Ativo' ? 'success' : 'secondary' }}">{{ $p->status }}</span></td>
+                <td><span class="badge p-2 bg-{{ $p->status == 'Ativo' ? 'success' : 'secondary' }}">{{ $p->status }}</span></td>
                 <td>{{ $p->ano }}</td>
-                <td>
+                <td class="text-end">
                     <a href="/projetos/{{ $p->codigo }}/editar" class="btn btn-sm btn-warning">Editar</a>
                     <form action="/projetos/{{ $p->codigo }}" method="POST" class="d-inline" onsubmit="return confirm('Remover este projeto?')">
                         @csrf
@@ -47,4 +49,4 @@
             @endforelse
         </tbody>
     </table>
-</div>
+@endsection

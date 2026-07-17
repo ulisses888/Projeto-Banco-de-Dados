@@ -3,9 +3,9 @@
 @section('conteudo')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 m-0">Servidores</h1>
-        <a href="{{ route('servidores.create') }}" class="btn btn-primary">Novo servidor</a>
+        <a href="{{ route('servidores.create') }}" class="btn btn-primary">+ Novo</a>
     </div>
-    <table class="table table-striped bg-white">
+    <table class="table table-striped bg-white align-middle">
         <thead><tr><th>SIAPE</th><th>Nome</th><th>Unidade</th><th></th></tr></thead>
         <tbody>
         @foreach($servidores as $servidor)
@@ -14,10 +14,10 @@
                 <td>{{ $servidor->nome }}</td>
                 <td>{{ $servidor->unidade }}</td>
                 <td class="text-end">
-                    <a href="{{ route('servidores.edit', $servidor->siape) }}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                    <a href="{{ route('servidores.edit', $servidor->siape) }}" class="btn btn-sm btn-warning">Editar</a>
                     <form action="{{ route('servidores.destroy', $servidor->siape) }}" method="POST" class="d-inline" onsubmit="return confirm('Remover este servidor?')">
                         @csrf @method('DELETE')
-                        <button class="btn btn-sm btn-outline-danger">Remover</button>
+                        <button class="btn btn-sm btn-danger">Remover</button>
                     </form>
                 </td>
             </tr>

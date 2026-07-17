@@ -42,6 +42,6 @@
         </div>
 
         <button class="btn btn-primary">Salvar</button>
-        <a href="{{ route('acoes.index') }}" class="btn btn-link">Cancelar</a>
+        <a href="{{ route('acoes.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 @endsection

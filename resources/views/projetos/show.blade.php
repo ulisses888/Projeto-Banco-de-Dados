@@ -6,7 +6,7 @@
             <h1 class="h3 m-0">{{ $projeto->nome }}</h1>
             <small class="text-muted">Código {{ $projeto->codigo }} · {{ $projeto->eixo }} · {{ $projeto->status }} · {{ $projeto->ano }}</small>
         </div>
-        <a href="{{ route('projetos.edit', $projeto->codigo) }}" class="btn btn-outline-secondary">Editar projeto</a>
+        <a href="{{ route('projetos.edit', $projeto->codigo) }}" class="btn btn-warning">Editar projeto</a>
     </div>
 
     <div class="row g-4">
@@ -20,7 +20,7 @@
                             <span>{{ $aluno->nome }} ({{ $aluno->matricula }}) {{ $aluno->bolsista ? '- bolsista' : '' }}</span>
                             <form action="{{ route('projetos.alunos.remover', [$projeto->codigo, $aluno->matricula]) }}" method="POST" onsubmit="return confirm('Remover aluno da equipe?')">
                                 @csrf @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger">Remover</button>
+                                <button class="btn btn-sm btn-danger">Remover</button>
                             </form>
                         </li>
                     @empty
@@ -60,7 +60,7 @@
                             <span>{{ $servidor->nome }} ({{ $servidor->siape }}) {{ $servidor->funcao ? '- coordenador' : '' }}</span>
                             <form action="{{ route('projetos.servidores.remover', [$projeto->codigo, $servidor->siape]) }}" method="POST" onsubmit="return confirm('Remover servidor da equipe?')">
                                 @csrf @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger">Remover</button>
+                                <button class="btn btn-sm btn-danger">Remover</button>
                             </form>
                         </li>
                     @empty
@@ -100,7 +100,7 @@
                             <span>{{ $outro->nome }} ({{ $outro->cpf }})</span>
                             <form action="{{ route('projetos.outros.remover', [$projeto->codigo, $outro->cpf]) }}" method="POST" onsubmit="return confirm('Remover participante da equipe?')">
                                 @csrf @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger">Remover</button>
+                                <button class="btn btn-sm btn-danger">Remover</button>
                             </form>
                         </li>
                     @empty
