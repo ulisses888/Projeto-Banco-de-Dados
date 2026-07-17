@@ -1,34 +1,41 @@
-@extends('layouts.app')
-@section('titulo', $projeto ? 'Editar projeto' : 'Novo projeto')
-@section('conteudo')
-    <h1 class="h3 mb-3">{{ $projeto ? 'Editar projeto' : 'Novo projeto' }}</h1>
-    <form method="POST" action="{{ $projeto ? route('projetos.update', $projeto->codigo) : route('projetos.store') }}" class="bg-white p-4 rounded shadow-sm">
+<div class="card">
+    <h2>{{ isset($projeto) ? 'Editar Projeto' : 'Novo Projeto' }}</h2>
+    
+    <form method="POST" action="{{ isset($projeto) ? '/projetos/'.$projeto->codigo : '/projetos' }}">
         @csrf
-        @if($projeto) @method('PUT') @endif
+        @if(isset($projeto)) @method('PUT') @endif
 
         <div class="mb-3">
             <label class="form-label">Código</label>
-            <input type="number" name="codigo" class="form-control"
-                   value="{{ old('codigo', $projeto->codigo ?? '') }}" {{ $projeto ? 'readonly' : '' }} required>
+            <input type="number" name="codigo" class="form-control" 
+                   value="{{ old('codigo', $projeto->codigo ?? '') }}" 
+                   {{ isset($projeto) ? 'readonly' : '' }} required>
         </div>
         <div class="mb-3">
             <label class="form-label">Nome</label>
-            <input type="text" name="nome" class="form-control" value="{{ old('nome', $projeto->nome ?? '') }}" required>
+            <input type="text" name="nome" class="form-control" 
+                   value="{{ old('nome', $projeto->nome ?? '') }}" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Eixo</label>
-            <input type="text" name="eixo" class="form-control" value="{{ old('eixo', $projeto->eixo ?? '') }}" required>
+            <input type="text" name="eixo" class="form-control" 
+                   value="{{ old('eixo', $projeto->eixo ?? '') }}" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Status</label>
-            <input type="text" name="status" class="form-control" value="{{ old('status', $projeto->status ?? '') }}" required>
+            <select name="status" class="form-control">
+                <option value="Ativo" {{ (old('status', $projeto->status ?? '') == 'Ativo') ? 'selected' : '' }}>Ativo</option>
+                <option value="Concluído" {{ (old('status', $projeto->status ?? '') == 'Concluído') ? 'selected' : '' }}>Concluído</option>
+                <option value="Em andamento" {{ (old('status', $projeto->status ?? '') == 'Em andamento') ? 'selected' : '' }}>Em andamento</option>
+            </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Ano</label>
-            <input type="number" name="ano" class="form-control" value="{{ old('ano', $projeto->ano ?? '') }}" required>
+            <input type="number" name="ano" class="form-control" 
+                   value="{{ old('ano', $projeto->ano ?? '') }}" required>
         </div>
 
         <button class="btn btn-primary">Salvar</button>
-        <a href="{{ route('projetos.index') }}" class="btn btn-link">Cancelar</a>
+        <a href="/projetos" class="btn btn-secondary">Cancelar</a>
     </form>
-@endsection
+</div>

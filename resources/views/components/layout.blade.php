@@ -161,23 +161,44 @@
         
         <!-- Array de Botões -->
         <div class="nav-container">
-            <p>Área de testes</p>
-            <button onclick="openTable()">Teste</button>
+            <p>Menu</p>
+            <button onclick="loadPage('projetos')" class="active">Projetos</button>
+            <br>
+            <button onclick="loadPage('programas')">Programas</button>
+            <br>
+            <button onclick="loadPage('acoes')">Ações</button>
+            <br>
+            <button onclick="loadPage('articulacoes')">Articulações</button>
+            <br>
+            <button onclick="loadPage('alunos')">Alunos</button>
+            <br>
+            <button onclick="loadPage('servidores')">Servidores</button>
+            <br>
+            <button onclick="loadPage('outros')">Outros</button>
         </div>
 
 
-        <!-- Área de Conteúdo -->
+        <!-- Conteúdo -->
         <div class="content-container">
+            <p>Área de Conteúdo</p>
             <div class="component-wrapper">
-                {{ $slot }}
+                <iframe id="contentFrame" src="{{ url('/projetos') }}"></iframe>
             </div>
         </div>
+    </div>
 
     </div>
 
     <script>
-        function openTable() {
-            window.location.href = "{{ url('teste') }}";
+        function loadPage(page) {
+            const frame = document.getElementById('contentFrame');
+            frame.src = `/${page}`;
+            
+            // Atualizar botão
+            document.querySelectorAll('.nav-container button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
         }
     </script>
 
