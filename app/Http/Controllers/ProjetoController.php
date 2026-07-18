@@ -12,9 +12,14 @@ use Illuminate\Http\Request;
 
 class ProjetoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projetos = ProjetoRepository::projetos();
+        $termo = $request->query('search');
+
+        $projetos = $termo
+            ? ProjetoRepository::buscar_projetos($termo)
+            : ProjetoRepository::projetos();
+
         return view('projetos.index', compact('projetos'));
     }
 

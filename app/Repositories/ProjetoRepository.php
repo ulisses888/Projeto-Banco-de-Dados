@@ -11,6 +11,15 @@ class ProjetoRepository
         return DB::select('SELECT * FROM projetos');
     }
 
+    public static function buscar_projetos(string $termo): array
+{
+        $like = '%' . $termo . '%';
+    return DB::select(
+        'SELECT * FROM projetos WHERE nome LIKE ? OR eixo LIKE ? OR status LIKE ?',
+        [$like, $like, $like]
+    );
+}
+
     public static function projeto_por_codigo(int $codigo): array
     {
         return DB::select('SELECT * FROM projetos WHERE codigo = ?', [$codigo]);
