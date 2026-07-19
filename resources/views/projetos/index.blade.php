@@ -36,6 +36,7 @@
                 <td><span class="badge p-2 bg-{{ $p->status == 'Ativo' ? 'success' : 'secondary' }}">{{ $p->status }}</span></td>
                 <td>{{ $p->ano }}</td>
                 <td class="text-end">
+                    <a href="/projetos/{{ $p->codigo }}" class="btn btn-sm btn-secondary">Detalhes</a>
                     <a href="/projetos/{{ $p->codigo }}/editar" class="btn btn-sm btn-warning">Editar</a>
                     <form action="/projetos/{{ $p->codigo }}" method="POST" class="d-inline" onsubmit="return confirm('Remover este projeto?')">
                         @csrf
