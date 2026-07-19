@@ -17,7 +17,7 @@
                 <ul class="list-group list-group-flush">
                     @forelse($alunosDoProjeto as $aluno)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>{{ $aluno->nome }} ({{ $aluno->matricula }}) {{ $aluno->bolsista ? '- bolsista' : '' }}</span>
+                            <span>{{ $aluno->nome }} ({{ $aluno->matricula }}) {{ $aluno->bolsista ? '- Bolsista' : '' }}</span>
                             <form action="{{ route('projetos.alunos.remover', [$projeto->codigo, $aluno->matricula]) }}" method="POST" onsubmit="return confirm('Remover aluno da equipe?')">
                                 @csrf @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Remover</button>
@@ -38,12 +38,12 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-3 form-check mt-2">
+                        <div class="col-3 mt-3">
                             <input type="checkbox" name="bolsista" value="1" class="form-check-input" id="bolsista">
                             <label class="form-check-label" for="bolsista">Bolsista</label>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-primary w-100">+</button>
+                            <button class="btn btn-primary">Adicionar</button>
                         </div>
                     </form>
                 </div>
@@ -78,12 +78,12 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-3 form-check mt-2">
+                        <div class="col-3 mt-3">
                             <input type="checkbox" name="funcao" value="1" class="form-check-input" id="funcao">
                             <label class="form-check-label" for="funcao">Coordenador</label>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-primary w-100">+</button>
+                            <button class="btn btn-primary">Adicionar</button>
                         </div>
                     </form>
                 </div>
@@ -119,7 +119,7 @@
                             </select>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-primary w-100">+</button>
+                            <button class="btn btn-primary">Adicionar</button>
                         </div>
                     </form>
                 </div>
@@ -131,7 +131,7 @@
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     Ações do projeto
-                    <a href="{{ route('acoes.create') }}" class="btn btn-sm btn-outline-primary">Nova ação</a>
+                    <a href="{{ route('acoes.create') }}" class="btn btn-sm btn-primary">Nova ação</a>
                 </div>
                 <ul class="list-group list-group-flush">
                     @forelse($acoes as $acao)
@@ -148,7 +148,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     Articulações do projeto
-                    <a href="{{ route('articulacoes.create') }}" class="btn btn-sm btn-outline-primary">Nova articulação</a>
+                    <a href="{{ route('articulacoes.create') }}" class="btn btn-sm btn-primary">Nova articulação</a>
                 </div>
                 <ul class="list-group list-group-flush">
                     @forelse($articulacoes as $articulacao)
