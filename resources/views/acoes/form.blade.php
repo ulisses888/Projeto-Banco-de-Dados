@@ -6,12 +6,6 @@
         @csrf
         @if($acao) @method('PUT') @endif
 
-        <div class="mb-3">
-            <label class="form-label">Código</label>
-            <input type="number" name="codigo" class="form-control"
-                   value="{{ old('codigo', $acao->codigo ?? '') }}" {{ $acao ? 'readonly' : '' }} required>
-        </div>
-
         @if(!$acao)
         <div class="mb-3">
             <label class="form-label">Projeto</label>

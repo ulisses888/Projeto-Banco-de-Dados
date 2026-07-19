@@ -22,15 +22,10 @@ class ProgramaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'codigo' => 'required|integer',
             'nome' => 'required|string|max:255',
         ]);
 
-        if (ProgramaRepository::programa_por_codigo((int) $data['codigo'])) {
-            return back()->withInput()->withErrors(['codigo' => 'Já existe um programa com esse código.']);
-        }
-
-        ProgramaRepository::adicionar_programa((int) $data['codigo'], $data['nome']);
+        ProgramaRepository::adicionar_programa($data['nome']);
 
         return redirect()->route('programas.index')->with('sucesso', 'Programa cadastrado com sucesso.');
     }

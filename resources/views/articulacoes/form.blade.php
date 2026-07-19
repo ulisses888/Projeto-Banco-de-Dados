@@ -6,12 +6,6 @@
         @csrf
         @if($articulacao) @method('PUT') @endif
 
-        <div class="mb-3">
-            <label class="form-label">Código</label>
-            <input type="number" name="codigo" class="form-control"
-                   value="{{ old('codigo', $articulacao->codigo ?? '') }}" {{ $articulacao ? 'readonly' : '' }} required>
-        </div>
-
         @if(!$articulacao)
         <div class="mb-3">
             <label class="form-label">Projeto</label>

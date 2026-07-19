@@ -12,22 +12,25 @@ class ProjetoRepository
     }
 
     public static function buscar_projetos(string $termo): array
-{
+    {
         $like = '%' . $termo . '%';
-    return DB::select(
-        'SELECT * FROM projetos WHERE nome LIKE ? OR eixo LIKE ? OR status LIKE ?',
-        [$like, $like, $like]
-    );
-}
+        return DB::select(
+            'SELECT * FROM projetos WHERE nome LIKE ? OR eixo LIKE ? OR status LIKE ?',
+            [$like, $like, $like]
+        );
+    }
 
     public static function projeto_por_codigo(int $codigo): array
     {
         return DB::select('SELECT * FROM projetos WHERE codigo = ?', [$codigo]);
     }
 
-    public static function adicionar_projeto(int $codigo, string $nome, string $eixo, string $status, string $ano)
+    public static function adicionar_projeto(string $nome, string $eixo, string $status, string $ano)
     {
-        DB::insert('INSERT INTO projetos VALUES (?, ?, ?, ?, ?)', [$codigo, $nome, $eixo, $status, $ano]);
+        DB::insert(
+            'INSERT INTO projetos (nome, eixo, status, ano)
+            VALUES (?, ?, ?, ?)', [$nome, $eixo, $status, $ano]
+        );
     }
 
     public static function deletar_projeto(int $codigo)

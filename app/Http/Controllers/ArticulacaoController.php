@@ -23,17 +23,12 @@ class ArticulacaoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'codigo' => 'required|integer',
             'codigo_projeto' => 'required|integer',
             'nome' => 'required|string|max:255',
         ]);
 
-        if (ArticulacaoRepository::articulacao_por_codigo((int) $data['codigo'])) {
-            return back()->withInput()->withErrors(['codigo' => 'Já existe uma articulação com esse código.']);
-        }
-
         ArticulacaoRepository::adicionar_articulacao(
-            (int) $data['codigo'], (int) $data['codigo_projeto'], $data['nome']
+            (int) $data['codigo_projeto'], $data['nome']
         );
 
         return redirect()->route('articulacoes.index')->with('sucesso', 'Articulação cadastrada com sucesso.');

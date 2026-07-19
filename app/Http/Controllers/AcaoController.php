@@ -23,7 +23,6 @@ class AcaoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'codigo' => 'required|integer',
             'codigo_projeto' => 'required|integer',
             'titulo' => 'required|string|max:255',
             'genero' => 'required|string|max:255',
@@ -31,12 +30,8 @@ class AcaoController extends Controller
             'descricao' => 'required|string',
         ]);
 
-        if (AcaoRepository::acao_por_codigo((int) $data['codigo'])) {
-            return back()->withInput()->withErrors(['codigo' => 'Já existe uma ação com esse código.']);
-        }
-
         AcaoRepository::adicionar_acao(
-            (int) $data['codigo'], (int) $data['codigo_projeto'],
+            (int) $data['codigo_projeto'],
             $data['titulo'], $data['genero'], $data['status'], $data['descricao']
         );
 

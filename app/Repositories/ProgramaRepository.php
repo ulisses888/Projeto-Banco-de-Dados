@@ -23,11 +23,10 @@ class ProgramaRepository
                            WHERE codigo_programa = ?', [$codigo]);
     }
 
-    public static function adicionar_programa(int $codigo, string $nome)
+    public static function adicionar_programa(string $nome)
     {
         DB::insert(
-            'INSERT INTO programas VALUES (?, ?)',
-            [$codigo, $nome]
+            'INSERT INTO programas (nome) VALUES (?)', [$nome]
         );
     }
 

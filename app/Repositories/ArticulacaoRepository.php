@@ -21,11 +21,11 @@ class ArticulacaoRepository
         return DB::select('SELECT * FROM articulacoes WHERE codigo_projeto = ?', [$codigo_projeto]);
     }
 
-    public static function adicionar_articulacao(int $codigo, int $codigo_projeto, string $nome)
+    public static function adicionar_articulacao(int $codigo_projeto, string $nome)
     {
         DB::insert(
-            'INSERT INTO articulacoes VALUES (?, ?, ?)',
-            [$codigo, $codigo_projeto, $nome]
+            'INSERT INTO articulacoes (codigo_projeto, nome) VALUES (?, ?)',
+            [$codigo_projeto, $nome]
         );
     }
 

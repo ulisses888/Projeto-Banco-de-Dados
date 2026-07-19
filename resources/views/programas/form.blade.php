@@ -7,11 +7,6 @@
         @if($programa) @method('PUT') @endif
 
         <div class="mb-3">
-            <label class="form-label">Código</label>
-            <input type="number" name="codigo" class="form-control"
-                   value="{{ old('codigo', $programa->codigo ?? '') }}" {{ $programa ? 'readonly' : '' }} required>
-        </div>
-        <div class="mb-3">
             <label class="form-label">Nome</label>
             <input type="text" name="nome" class="form-control" value="{{ old('nome', $programa->nome ?? '') }}" required>
         </div>

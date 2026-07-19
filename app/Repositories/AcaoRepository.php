@@ -25,11 +25,11 @@ class AcaoRepository
     }
 
     public static function adicionar_acao(
-        int $codigo,int $codigo_projeto, string $titulo, string $genero, string $status, string $descricao
+        int $codigo_projeto, string $titulo, string $genero, string $status, string $descricao
     ) {
         DB::insert(
-            'INSERT INTO acoes VALUES (?, ?, ?, ?, ?, ?)',
-            [$codigo, $codigo_projeto, $titulo, $genero, $status, $descricao]
+            'INSERT INTO acoes (codigo_projeto, titulo, genero, status, descricao) VALUES (?, ?, ?, ?, ?)',
+            [$codigo_projeto, $titulo, $genero, $status, $descricao]
         );
     }
 

@@ -3,7 +3,7 @@ CREATE DATABASE projetos;
 USE projetos;
 
 CREATE TABLE IF NOT EXISTS projetos (
-    codigo INT PRIMARY KEY,
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
     eixo VARCHAR(255),
     status VARCHAR(50),
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS outro_participa (
 );
 
 CREATE TABLE IF NOT EXISTS acoes (
-    codigo INT PRIMARY KEY,
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
     codigo_projeto INT,
     CONSTRAINT `fk_acoes_codigo_projeto`
     FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS acoes (
 );
 
 CREATE TABLE IF NOT EXISTS articulacoes (
-    codigo INT PRIMARY KEY,
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
     codigo_projeto INT,
     CONSTRAINT `fk_articulacoes_codigo_projeto`
     FOREIGN KEY (codigo_projeto) REFERENCES projetos(codigo) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS articulacoes (
 );
 
 CREATE TABLE IF NOT EXISTS programas (
-    codigo INT PRIMARY KEY,
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255)
 );
 

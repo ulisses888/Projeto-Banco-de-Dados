@@ -31,19 +31,14 @@ class ProjetoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'codigo' => 'required|integer',
             'nome' => 'required|string|max:255',
             'eixo' => 'required|string|max:255',
             'status' => 'required|string|max:255',
             'ano' => 'required|string|max:10',
         ]);
 
-        if (ProjetoRepository::projeto_por_codigo((int) $data['codigo'])) {
-            return back()->withInput()->withErrors(['codigo' => 'Já existe um projeto com esse código.']);
-        }
-
         ProjetoRepository::adicionar_projeto(
-            (int) $data['codigo'], $data['nome'], $data['eixo'], $data['status'], $data['ano']
+            $data['nome'], $data['eixo'], $data['status'], $data['ano']
         );
 
         return redirect()->route('projetos.index')->with('sucesso', 'Projeto cadastrado com sucesso.');
