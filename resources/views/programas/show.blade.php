@@ -6,7 +6,7 @@
             <h1 class="h3 m-0">{{ $programa->nome }}</h1>
             <small class="text-muted">Código {{ $programa->codigo }}</small>
         </div>
-        <a href="{{ route('programas.edit', $programa->codigo) }}" class="btn btn-secondary">Editar programa</a>
+        <a href="{{ route('programas.edit', $programa->codigo) }}" class="btn btn-warning">Editar programa</a>
     </div>
 
     <div class="card">
