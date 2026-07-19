@@ -8,7 +8,10 @@ class AcaoRepository
 {
     public static function acoes(): array
     {
-        return DB::select('SELECT * FROM acoes INNER JOIN projetos ON acoes.codigo_projeto = projetos.codigo');
+        return DB::select(
+            'SELECT acoes.codigo AS codigo, titulo, genero, acoes.status, projetos.nome AS nome_projeto
+            FROM acoes INNER JOIN projetos ON acoes.codigo_projeto = projetos.codigo'
+        );
     }
 
     public static function acao_por_codigo(int $codigo): array
