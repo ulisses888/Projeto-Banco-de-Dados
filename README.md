@@ -79,7 +79,8 @@ php artisan key:generate
 # editar o .env com as credenciais do banco (DB_DATABASE, DB_USERNAME, DB_PASSWORD)
 
 # rodar os scripts SQL do projeto no banco configurado
-# (schema + dados de teste, disponíveis em [preencher caminho])
+# apos isso fazer o migrate
+php artisan migrate
 
 # subir o servidor
 php artisan serve
