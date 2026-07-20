@@ -99,6 +99,5 @@ resources/
   views/layouts/app.blade.php  # layout base com menu e Bootstrap
 routes/
   web.php                 # rotas da aplicação
-database/
-  scripts/                # [preencher] scripts SQL (schema, seeds, consultas, trigger)
+database/ # scripts da criação do banco de dados SQL e algumas consultas exemplo
 ```
