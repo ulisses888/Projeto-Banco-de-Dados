@@ -7,6 +7,7 @@ prático da disciplina de **Projeto de Banco de Dados** (2026/1).
 
 **Disciplina:** Projeto de Banco de Dados — Curso de Bacharelado em Ciência
 da Computação, UFPel/CDTec
+
 **Integrantes:** Érick Freitas, Ulisses Junior, Vinícius Campos
 
 
@@ -28,7 +29,7 @@ O sistema permite o cadastro e a gestão de:
 ### Scripts SQL
 
 Os scripts de criação das tabelas, restrições de integridade, carga de dados
-de teste, consultas (mínimo 6, sendo 4 com junção) e o gatilho (trigger) estão
+de teste, consultas estão
 em `database/scripts/`
 
 ## Arquitetura da interface
@@ -61,9 +62,9 @@ disciplina.
 ## Como executar
 
 ### Pré-requisitos
-- PHP 8.2+
+- PHP 8.4+
 - Composer
-- MySQL/MariaDB
+- MariaDB
 
 ### Passos
 
